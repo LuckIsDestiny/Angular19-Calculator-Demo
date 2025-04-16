@@ -14,7 +14,9 @@ export class CalculatorObsSubComponent {
   numberArray = computed(() =>
     this.numberInput()
       .split(',')
-      .map((n) => Number(n.trim()))
+      .map((n) => n.trim())
+      .filter((n) => n !== '')
+      .map((n) => Number(n))
       .filter((n) => !isNaN(n))
   );
   result = signal<number | string>(0);
